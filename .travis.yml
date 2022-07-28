@@ -16,7 +16,7 @@ after_success:
   - docker build -t vd1234/multi-server ./server
   - docker build -t vd1234/multi-worker ./worker
   # Log in to the docker CLI
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" docker.io
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push vd1234/multi-client
   - docker push vd1234/multi-nginx
